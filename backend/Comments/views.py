@@ -24,3 +24,19 @@ def create_comment(request):
         serializer.save(user=user)  # Save the user along with the comment
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated]) 
+def delete_comment(request, comment_id):
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except Comment.DoesNotExist:
+        return Response({"message": "Comment not found"}, status=404)
+
+    
+    if comment.user != request.user:
+        return Response({"message": "You are not allowed to delete this comment"}, status=403)
+
+    comment.delete()
+    return Response({"message": "Comment deleted successfully"}, status=204)
