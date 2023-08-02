@@ -14,7 +14,7 @@ def get_replies(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])  # Require JWT authorization for this endpoint
-def create_reply(request, pk):
+def create_reply(request):
  #   user = request.user
 
     
@@ -31,6 +31,6 @@ def create_reply(request, pk):
     # Create the reply with the comment association
     serializer = ReplySerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(user=request.user, comment=pk)
+        serializer.save(user=request.user)
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)

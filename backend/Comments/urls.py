@@ -5,4 +5,5 @@ urlpatterns = [
     path('<str:video_id>/', get_comments_by_video_id),
     path('', create_comment),
     path('delete/<int:comment_id>/', delete_comment),
+    
 ]
