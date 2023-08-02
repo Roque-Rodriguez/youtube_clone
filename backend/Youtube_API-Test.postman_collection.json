@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "53366813-c538-401b-8f91-b56341c909cf",
+		"name": "Youtube_API-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26661850"
+	},
+	"item": [
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get Comments by Video ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNzAyNDk4LCJpYXQiOjE2OTA4Mzg0OTgsImp0aSI6ImNiYzI5YmFmOGYwZjRjZmU5NGJhMmU3OGJlZTkwMjA5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIifQ.mOUVXfMoB6ToZc8TuNpg4qJ7AsKtKrx8XE1PXr07dHo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": 1,\r\n  \"video_id\": \"Video1\",\r\n  \"text\": \"CLEETUS\",\r\n  \"likes\": 0,\r\n  \"dislikes\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNzczOTIzLCJpYXQiOjE2OTA5MDk5MjMsImp0aSI6ImJlMTQxYzQ1MGZlOTQ4OTI4MmIzMjAxYjFlMWZiMTU4IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIifQ.-18x3bVo-0AsU4T0EBV14BzqUYebztpphwDzuJw6uN8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Comments/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Comments",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Replies",
+			"item": [
+				{
+					"name": "Get Replies to Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNzczOTIzLCJpYXQiOjE2OTA5MDk5MjMsImp0aSI6ImJlMTQxYzQ1MGZlOTQ4OTI4MmIzMjAxYjFlMWZiMTU4IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIifQ.-18x3bVo-0AsU4T0EBV14BzqUYebztpphwDzuJw6uN8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/replies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Replies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNzczOTIzLCJpYXQiOjE2OTA5MDk5MjMsImp0aSI6ImJlMTQxYzQ1MGZlOTQ4OTI4MmIzMjAxYjFlMWZiMTU4IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIifQ.-18x3bVo-0AsU4T0EBV14BzqUYebztpphwDzuJw6uN8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/replies/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replies",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
