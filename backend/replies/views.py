@@ -15,19 +15,14 @@ def get_replies(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])  # Require JWT authorization for this endpoint
 def create_reply(request):
- #   user = request.user
-
-    
+    #   user = request.user
     #Comments_id = request.data.get(Comments_id)
-   
     # if not Comments_id:
     #     return Response({"message": "Comments_id is required in the request data."}, status=400)
-
     # try:
     #     Comments = Comments.objects.get(id=comment_id)
     # except Comments.DoesNotExist:
     #     return Response({"message": "Comment not found"}, status=404)
-
     # Create the reply with the comment association
     serializer = ReplySerializer(data=request.data)
     if serializer.is_valid():
