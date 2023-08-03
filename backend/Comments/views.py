@@ -9,7 +9,7 @@ from .serializers import CommentSerializer
 @permission_classes([AllowAny])  # Allow any user to access this endpoint
 def get_comments_by_video_id(request, video_id):
     comments = Comment.objects.filter(video_id=video_id)
-    serializer = CommentSerializer(comments, many=True)  # Serialize multiple objects
+    serializer = CommentSerializer(comments, many=True)  
     return Response(serializer.data)
 
 
@@ -19,7 +19,7 @@ def create_comment(request):
     # Access the user using `request.user`
     user = request.user
 
-    # Deserialize the request data and create a new comment
+   
     serializer = CommentSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=user)  # Save the user along with the comment
