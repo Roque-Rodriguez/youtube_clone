@@ -33,7 +33,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video/:videoId" element={<VideoPage />} />
+        <Route path="/VideoPage/:videoId" element={<VideoPage />} />
       </Routes>
       <Footer />
     </div>
