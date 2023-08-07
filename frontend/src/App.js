@@ -12,6 +12,7 @@ import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SearchPage from "./components/SearchPage/SearchPage";
 import VideoPage from "./components/VideoPage/VideoPage";
+import RelatedVideo from "./components/RelatedVideo/RelatedVideo";
 
 
 // Util Imports
@@ -34,6 +35,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/VideoPage/:videoId" element={<VideoPage />} />
+        <Route path="/RelatedVideo/:videoId" element={<RelatedVideo />} />
       </Routes>
       <Footer />
     </div>

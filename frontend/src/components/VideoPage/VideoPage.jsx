@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import RelatedVideo from "../RelatedVideo/RelatedVideo";
+
+
 
 const VideoPage = () => {
   const { videoId } = useParams(); // Get the videoId from the URL
@@ -41,17 +44,26 @@ const VideoPage = () => {
     const videoEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
 
     return (
-      <div>
-        <h2>{videoTitle}</h2>
-        <p>{videoDescription}</p>
-        <iframe
-          title={videoTitle}
-          width="640"
-          height="360"
-          src={videoEmbedUrl}
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <h2>{videoTitle}</h2>
+          <p>{videoDescription}</p>
+          <iframe
+            title={videoTitle}
+            width="640"
+            height="360"
+            src={videoEmbedUrl}
+            // frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <div style={{ flex: 1 }}>
+          <h2>Related Videos</h2>
+          <RelatedVideo
+            videoId={videoId}
+            apiKey="AIzaSyD_kAiHXu7jpybr9Jy19-Ovfs_j13Htxuo"
+          />
+        </div>
       </div>
     );
   };
