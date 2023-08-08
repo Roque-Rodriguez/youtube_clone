@@ -14,7 +14,7 @@ const RelatedVideo = ({ videoId, apiKey }) => {
           "https://www.googleapis.com/youtube/v3/search",
           {
             params: {
-              key: apiKey,
+              key: API_KEY,
               part: "snippet",
               maxResults: 5,
               relatedToVideoId: videoId,
@@ -22,17 +22,10 @@ const RelatedVideo = ({ videoId, apiKey }) => {
             },
           }
         );
-        console.log(apiKey);
-        console.log(videoId);
 
-        setRelatedVideos(response.data.items[0]);
-        console.log(setRelatedVideos);
+        setRelatedVideos(response.data.items);
       } catch (error) {
-        try {
-          //axios call
-        } catch (error) {
-          console.log(error.response.data);
-        }
+        console.log(error.response.data);
       }
     };
 
@@ -40,39 +33,52 @@ const RelatedVideo = ({ videoId, apiKey }) => {
   }, [videoId, apiKey]);
 
   const handleVideoClick = (videoId) => {
-    navigate(`/RelatedVideo/${videoId}`); // Assuming you have a route defined for RelatedVideo
+    navigate(`/RelatedVideo/${videoId}`);
   };
 
-  const RelatedVideo = ({ relatedVideos, handleVideoClick }) => {
-  if (!relatedVideos || !Array.isArray(relatedVideos) || relatedVideos.length === 0) {
-    // Handle the case where relatedVideos is not an array or is empty
+  if (
+    !relatedVideos ||
+    !Array.isArray(relatedVideos) ||
+    relatedVideos.length === 0
+  ) {
     return <div>No related videos found.</div>;
   }
 
   return (
     <div>
-      {relatedVideos.map((video) => (
-        <div
-          key={video.id?.videoId} // Use optional chaining (?.) to access properties safely
-          onClick={() => handleVideoClick(video.id?.videoId)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "10px",
-          }}
-        >
-          {video.snippet?.thumbnails?.medium?.url && (
-            <img
-              src={video.snippet.thumbnails.medium.url}
-              alt={video.snippet.title}
-              style={{ marginRight: "10px" }}
-            />
-          )}
-          {video.snippet?.title && <h3>{video.snippet.title}</h3>}
-        </div>
-      ))}
+      {(() => {
+        const videoItems = [];
+        for (let i = 0; i < relatedVideos.length; i++) {
+          const video = relatedVideos[i];
+          const videoId = video.id?.videoId;
+          const thumbnailUrl = video.snippet?.thumbnails?.medium?.url;
+          const title = video.snippet?.title;
+
+          if (videoId && thumbnailUrl && title) {
+            videoItems.push(
+              <div
+                key={videoId}
+                onClick={() => handleVideoClick(videoId)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <img
+                  src={thumbnailUrl}
+                  alt={title}
+                  style={{ marginRight: "10px" }}
+                />
+                <h3>{title}</h3>
+              </div>
+            );
+          }
+        }
+        return videoItems;
+      })()}
     </div>
   );
 };
 
-export default RelatedVideo;    
+export default RelatedVideo;
