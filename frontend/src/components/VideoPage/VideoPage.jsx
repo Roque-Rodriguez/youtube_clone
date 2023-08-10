@@ -47,22 +47,23 @@ const VideoPage = () => {
 
     return (
       <div className="video-page">
-        <div className="video-details">
-          <iframe
-            className="video-embed"
-            title={videoTitle}
-            width="640"
-            height="360"
-            src={videoEmbedUrl}
-            allowFullScreen
-          ></iframe>
-          <h2 className="video-details">{videoTitle}</h2>
+        <div>
+          <div className="video">
+            <iframe
+              className="video-embed"
+              title={videoTitle}
+              width="640"
+              height="360"
+              src={videoEmbedUrl}
+              allowFullScreen
+            ></iframe>
+            <h2 className="video-title">{videoTitle}</h2>
+          </div>
+          <p className="video-description">{videoDescription}</p>
+          <div className="comment-section">
+            <Comment videoId={videoId} jwtToken={token} />
+          </div>
         </div>
-        <p className="video-details">{videoDescription}</p>
-        <div className="comment-section">
-          <Comment videoId={videoId} jwtToken={token} />
-        </div>
-
         <div className="related-videos">
           <h2>Related Videos</h2>
           <RelatedVideo
@@ -76,7 +77,9 @@ const VideoPage = () => {
 
   return (
     <div>
-      <h2>VideoPage</h2>
+      <div className="video-detail">
+        <h2>VideoPage</h2>
+      </div>
       {renderPlayer()}
     </div>
   );

@@ -1,9 +1,10 @@
 /* VideoPage.css */
 
-/* .video-page {
+ .video-page {
   padding: 20px;
   display: flex; 
-  align-items: flex-start;
+ 
+}
 
 
 
@@ -14,35 +15,71 @@ Styling for the video player section */
   margin-right: 20px;
   display: flex;
   flex-direction: column;
-} 
+}
 
 .video-details h2 {
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
-.video-details  {
-  max-height: 15%;
-  overflow: auto;
+.video-detail{
+    text-align: center;
+    text-decoration-line: underline;
 }
 
 .video-embed {
- 
   border: none;
 }
 
-.video-description p {
-  max-height: 10%;
-  overflow: auto;
-  max-width: 25%;
+.video-description {
+  max-height: 9rem;
+  overflow-y: scroll;
+  max-width: 41rem;
+  margin-bottom: 1rem;
 }
 
-.comment-section {
-  width: 50%;
+.video-title{
+    font-size: larger;
+    margin-bottom: 1rem;
+    margin-top: revert;
+}
+
+ .comment-section {
+  width: 100%;
   box-sizing: border-box;
   margin-top: 20px;
-  max-height: 50%;
-  overflow-y: auto;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* Style for the comment textarea */
+.comment-textarea {
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* Style for the submit button */
+.comment-submit-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.comment-submit-button:hover {
+  background-color: #555;
 }
 
 .related-videos {

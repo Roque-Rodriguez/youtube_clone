@@ -42,7 +42,9 @@ const RelatedVideo = ({ videoId, apiKey }) => {
     !Array.isArray(relatedVideos) ||
     relatedVideos.length === 0
   ) {
-    return <div>No related videos found.</div>;
+    return <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+  No related videos found.
+</div>;
   }
 
   return (

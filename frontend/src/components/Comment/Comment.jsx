@@ -74,7 +74,6 @@ const Comment = ({ videoId, apiKey, jwtToken, isAdmin }) => {
 
   return (
     <div>
-      
       <h2>Comments</h2>
       <div>
         {comments.map((comment) => (
@@ -84,13 +83,16 @@ const Comment = ({ videoId, apiKey, jwtToken, isAdmin }) => {
         ))}
       </div>
       {jwtToken && (
-        <form onSubmit={handleCommentSubmit}>
+        <form onSubmit={handleCommentSubmit} className="comment-form">
           <textarea
+            className="comment-textarea"
             value={newComment}
             onChange={handleCommentChange}
             placeholder="Write a comment..."
           />
-          <button type="submit">Submit Comment</button>
+          <button className="comment-submit-button" type="submit">
+            Submit Comment
+          </button>
         </form>
       )}
     </div>
