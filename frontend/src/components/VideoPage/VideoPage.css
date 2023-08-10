@@ -92,6 +92,7 @@ Styling for the video player section */
 .related-videos h2 {
   font-size: 1.25rem;
   margin-bottom: 10px;
+  align-self: center;
 }
 
 /* Styling for loading indicator */
