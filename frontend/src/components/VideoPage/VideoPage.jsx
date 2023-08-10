@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import RelatedVideo from "../RelatedVideo/RelatedVideo";
-
-
+import Comment from "../Comment/Comment";
+import useAuth from "../../hooks/useAuth";
+import "./VideoPage.css";
 
 const VideoPage = () => {
   const { videoId } = useParams(); // Get the videoId from the URL
   const [videoData, setVideoData] = useState(null);
-
+  const [user, token] = useAuth();
+  //  console.log(user, token)
   useEffect(() => {
     // Function to fetch video details by videoId using YouTube Data API
     const fetchVideoDetails = async () => {
@@ -44,20 +46,24 @@ const VideoPage = () => {
     const videoEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
 
     return (
-      <div style={{ display: "flex" }}>
-        <div style={{ flex: 1 }}>
-          <h2>{videoTitle}</h2>
-          <p>{videoDescription}</p>
+      <div className="video-page">
+        <div className="video-details">
           <iframe
+            className="video-embed"
             title={videoTitle}
             width="640"
             height="360"
             src={videoEmbedUrl}
-            // frameBorder="0"
             allowFullScreen
           ></iframe>
+          <h2 className="video-details">{videoTitle}</h2>
         </div>
-        <div style={{ flex: 1 }}>
+        <p className="video-details">{videoDescription}</p>
+        <div className="comment-section">
+          <Comment videoId={videoId} jwtToken={token} />
+        </div>
+
+        <div className="related-videos">
           <h2>Related Videos</h2>
           <RelatedVideo
             videoId={videoId}
